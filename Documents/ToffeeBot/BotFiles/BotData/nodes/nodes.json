@@ -1,0 +1,2190 @@
+{
+  "nodes": [
+    {
+      "type": "command",
+      "name": "help",
+      "guid": "7942fe4c-dffa-4146-8cab-d254b3d80d5d",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "37eda463-a170-44f9-af54-61378ffc9294"
+          ]
+        }
+      ],
+      "inputs": [],
+      "x": 128,
+      "y": 184
+    },
+    {
+      "type": "command",
+      "name": "info",
+      "guid": "2224944a-561a-4fa1-824b-2f31ea37c836",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "5053a44d-4a5e-460a-974d-da0cc07aac7c"
+          ]
+        }
+      ],
+      "inputs": [],
+      "x": 149,
+      "y": 325
+    },
+    {
+      "type": "response",
+      "name": "help menu",
+      "guid": "37eda463-a170-44f9-af54-61378ffc9294",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "7942fe4c-dffa-4146-8cab-d254b3d80d5d"
+        }
+      ],
+      "x": 345,
+      "y": 181,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "1FFF57",
+        "Help Menu",
+        "",
+        "",
+        "",
+        "",
+        "Commands:\nt!sell <stock> <price> <system> <item> | This will list your items in the #trading channel. \nt!pics | Will show a pic of Toffee. (Very cute and made by Scottland_GT thanks him)\nt!buy <stock> <price> <system> <item> | This will list items you want in the #trading channel. \nt!killed <player username> <ground or space> <ship type and loot> | This will post your kill into our kill feed channel.\nt!claim <who killed you> <Space or ground> <location> <how did you die and what was lost> | This will make a insurance claim for you to get your stuff back at lowered prices. \n",
+        "",
+        "",
+        "Toffee Bot by Cyzoc#6613",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "show info",
+      "guid": "5053a44d-4a5e-460a-974d-da0cc07aac7c",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "2224944a-561a-4fa1-824b-2f31ea37c836"
+        }
+      ],
+      "x": 360,
+      "y": 324,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "${dbsVars.DefaultChannel.id}",
+        "Command Author: ${dbsVars.CommandAuthor.displayName}\nTagged author: <@${dbsVars.CommandAuthor.id}>\nYou can insert more values by clicking the \"Insert Variable\" button next to this field!",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelName",
+        "messageText",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": []
+    },
+    {
+      "type": "command",
+      "name": "sell",
+      "guid": "709298a1-b779-4847-88af-1b294b3977f5",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "4f4fde51-9933-46c1-a5c7-47d197e5b258"
+          ]
+        }
+      ],
+      "inputs": [],
+      "x": 24,
+      "y": 451,
+      "perms": []
+    },
+    {
+      "type": "response",
+      "name": "sellvar",
+      "guid": "4f4fde51-9933-46c1-a5c7-47d197e5b258",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "ammount",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "fc883e80-3592-4e0b-97d6-60d17da649a6"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "709298a1-b779-4847-88af-1b294b3977f5"
+        }
+      ],
+      "x": 366,
+      "y": 446,
+      "rtype": "Variable",
+      "rsubtype": "Store Value in Variable",
+      "formdata": [
+        "ammount",
+        "Text",
+        "temp",
+        "1"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType",
+        "param"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "sellvar2",
+      "guid": "fc883e80-3592-4e0b-97d6-60d17da649a6",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "Price",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "ce10684e-3a9d-4191-a994-22361d4eddb0"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "4f4fde51-9933-46c1-a5c7-47d197e5b258"
+        }
+      ],
+      "x": 572,
+      "y": 445,
+      "rtype": "Variable",
+      "rsubtype": "Store Value in Variable",
+      "formdata": [
+        "Price",
+        "Text",
+        "temp",
+        "2"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType",
+        "param"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "sellvar3",
+      "guid": "ce10684e-3a9d-4191-a994-22361d4eddb0",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "System",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "5e112f20-d1d5-46d5-b0c7-3d0642003772"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "fc883e80-3592-4e0b-97d6-60d17da649a6"
+        }
+      ],
+      "x": 779,
+      "y": 451,
+      "rtype": "Variable",
+      "rsubtype": "Store Value in Variable",
+      "formdata": [
+        "System",
+        "Text",
+        "temp",
+        "3"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType",
+        "param"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "sellvar4",
+      "guid": "5e112f20-d1d5-46d5-b0c7-3d0642003772",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "item",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "40c7859d-99a8-4210-8e7f-2edb37e1da71"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "ce10684e-3a9d-4191-a994-22361d4eddb0"
+        }
+      ],
+      "x": 987,
+      "y": 454,
+      "rtype": "Variable",
+      "rsubtype": "Store Value in Variable",
+      "formdata": [
+        "item",
+        "Text",
+        "temp",
+        "4+"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType",
+        "param"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "sellcof",
+      "guid": "40c7859d-99a8-4210-8e7f-2edb37e1da71",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "itemconfirm",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "784da29a-7134-4394-87fb-a310ae975f78"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "5e112f20-d1d5-46d5-b0c7-3d0642003772"
+        }
+      ],
+      "x": 1170,
+      "y": 456,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "09FF00",
+        "Comfirm Listing?",
+        "",
+        "${dbsVars.CommandAuthor.displayName}",
+        "",
+        "",
+        "Selling: ${tempVars.item}\nPrice: ${tempVars.Price}\nLocation: ${tempVars.System}\nStock: ${tempVars.ammount}",
+        "",
+        "",
+        "Toffee bot by Cyzoc#6613",
+        "BOOL_TRUE@@",
+        "itemconfirm",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "reaction",
+      "guid": "784da29a-7134-4394-87fb-a310ae975f78",
+      "reactionFields": [
+        "🟢",
+        "🔴"
+      ],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "🟢",
+          "connections": [
+            "ff2220ad-d821-4c5a-a49a-f5f7b2d417c5"
+          ]
+        },
+        {
+          "label": "🔴",
+          "connections": [
+            "7c3a5c52-2095-47a8-849f-9cae025bba8c"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "40c7859d-99a8-4210-8e7f-2edb37e1da71"
+        }
+      ],
+      "x": 1400,
+      "y": 455,
+      "rtype": "Reaction",
+      "rsubtype": "Add Reaction Listener",
+      "formdata": [
+        "${tempVars.itemconfirm.id}",
+        "0",
+        "reacted",
+        "reacteduser",
+        "BOOL_TRUE@@"
+      ],
+      "formnames": [
+        "message",
+        "duration",
+        "reactionemoji",
+        "reactionuser",
+        "react"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "sold",
+      "guid": "ff2220ad-d821-4c5a-a49a-f5f7b2d417c5",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "sellmsg",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "3c2f8182-20d3-4b31-bee8-1b9fcfb3f912"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "784da29a-7134-4394-87fb-a310ae975f78"
+        }
+      ],
+      "x": 1602,
+      "y": 387,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "814298586510655564",
+        "53AD13",
+        "Sell Listing:",
+        "",
+        "${dbsVars.CommandAuthor.displayName}",
+        "",
+        "",
+        "Item: ${tempVars.item}\nPrice: ${tempVars.Price}\nSystem: ${tempVars.System}\nStock: ${tempVars.ammount}",
+        "",
+        "",
+        "Toffee Bot by Cyzoc#6613",
+        "BOOL_TRUE@@",
+        "sellmsg",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "denied",
+      "guid": "7c3a5c52-2095-47a8-849f-9cae025bba8c",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "206362c7-5b94-4507-8a81-8c163252b534"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "784da29a-7134-4394-87fb-a310ae975f78"
+        }
+      ],
+      "x": 1624,
+      "y": 542,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "Oh, you must have made a mistake. Try again if you wish :pouttoffee:",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelName",
+        "messageText",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "wait69",
+      "guid": "206362c7-5b94-4507-8a81-8c163252b534",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "a8bf204c-b6b2-41b6-b923-366199ca9136"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "7c3a5c52-2095-47a8-849f-9cae025bba8c"
+        }
+      ],
+      "x": 1875,
+      "y": 551,
+      "rtype": "Control",
+      "rsubtype": "Wait",
+      "formdata": [
+        "7",
+        "seconds"
+      ],
+      "formnames": [
+        "waitduration",
+        "unit"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "delete",
+      "guid": "a8bf204c-b6b2-41b6-b923-366199ca9136",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "206362c7-5b94-4507-8a81-8c163252b534"
+        }
+      ],
+      "x": 2108,
+      "y": 552,
+      "rtype": "Message",
+      "rsubtype": "Delete Message",
+      "formdata": [
+        "${tempVars.itemconfirm.id} ${dbsVars.CommandMessage.id}",
+        "${dbsVars.CommandChannel.id}"
+      ],
+      "formnames": [
+        "varname",
+        "channelName"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "dlete2",
+      "guid": "3c2f8182-20d3-4b31-bee8-1b9fcfb3f912",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "ff2220ad-d821-4c5a-a49a-f5f7b2d417c5"
+        }
+      ],
+      "x": 1849,
+      "y": 390,
+      "rtype": "Message",
+      "rsubtype": "Delete Message",
+      "formdata": [
+        "${tempVars.itemconfirm.id} ${dbsVars.CommandMessage.id}",
+        "${dbsVars.CommandChannel.id}"
+      ],
+      "formnames": [
+        "varname",
+        "channelName"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "command",
+      "name": "pics",
+      "guid": "c6a00659-1c0e-4615-9be1-8937a1a48612",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "aa0eaa67-9490-4d27-a54a-65c8f0bfe634"
+          ]
+        }
+      ],
+      "inputs": [],
+      "x": 27,
+      "y": 636,
+      "perms": []
+    },
+    {
+      "type": "response",
+      "name": "are you sure?",
+      "guid": "d6afbdd6-fea2-4874-a996-1200e6caaf99",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "cd3afbf9-c110-4b9e-b84f-a0cd2342d5c9"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "aa0eaa67-9490-4d27-a54a-65c8f0bfe634"
+        }
+      ],
+      "x": 237,
+      "y": 645,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "I look cute, Don't I UwU...",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelName",
+        "messageText",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "rngpic",
+      "guid": "aa0eaa67-9490-4d27-a54a-65c8f0bfe634",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "d6afbdd6-fea2-4874-a996-1200e6caaf99"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "c6a00659-1c0e-4615-9be1-8937a1a48612"
+        }
+      ],
+      "x": 138,
+      "y": 772,
+      "rtype": "Variable",
+      "rsubtype": "Generate Random Number",
+      "formdata": [
+        "pic",
+        "1",
+        "4",
+        "temp"
+      ],
+      "formnames": [
+        "varname",
+        "min",
+        "max",
+        "saveVarType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "check",
+      "guid": "cd3afbf9-c110-4b9e-b84f-a0cd2342d5c9",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "true",
+          "connections": [
+            "3e3b9d55-da42-44e4-9b28-7d5e4c8406f6"
+          ]
+        },
+        {
+          "label": "false",
+          "connections": [
+            "0fa0d5eb-2224-4f58-8d4a-245d66a8511a"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "d6afbdd6-fea2-4874-a996-1200e6caaf99"
+        }
+      ],
+      "x": 470,
+      "y": 648,
+      "rtype": "Variable",
+      "rsubtype": "Check Variable Value",
+      "formdata": [
+        "pic",
+        "temp",
+        "equal to",
+        "1"
+      ],
+      "formnames": [
+        "varname",
+        "saveVarType",
+        "compare",
+        "value"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "check2",
+      "guid": "0fa0d5eb-2224-4f58-8d4a-245d66a8511a",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "true",
+          "connections": [
+            "6c3b8c1d-636f-4479-9567-92387f69d53d"
+          ]
+        },
+        {
+          "label": "false",
+          "connections": [
+            "466b897f-c88f-4e86-a185-8b352970de89"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "cd3afbf9-c110-4b9e-b84f-a0cd2342d5c9"
+        }
+      ],
+      "x": 744,
+      "y": 743,
+      "rtype": "Variable",
+      "rsubtype": "Check Variable Value",
+      "formdata": [
+        "pic",
+        "temp",
+        "equal to",
+        "2"
+      ],
+      "formnames": [
+        "varname",
+        "saveVarType",
+        "compare",
+        "value"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "swimsuit",
+      "guid": "6c3b8c1d-636f-4479-9567-92387f69d53d",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "d315abd4-92a6-430a-8517-a3a4c4bca5b7"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "0fa0d5eb-2224-4f58-8d4a-245d66a8511a"
+        }
+      ],
+      "x": 941,
+      "y": 727,
+      "rtype": "Message",
+      "rsubtype": "Send Image",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "https://cdn.discordapp.com/attachments/881707436434677782/909290502560555028/unknown.png",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelName",
+        "url",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "check2_1",
+      "guid": "466b897f-c88f-4e86-a185-8b352970de89",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "true",
+          "connections": [
+            "db4f5c76-55d4-460a-aa6f-5560c2ae476e"
+          ]
+        },
+        {
+          "label": "false",
+          "connections": [
+            "311f16f3-c36e-48c8-9782-8f1bcc59744b"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "0fa0d5eb-2224-4f58-8d4a-245d66a8511a"
+        }
+      ],
+      "x": 938,
+      "y": 852,
+      "rtype": "Variable",
+      "rsubtype": "Check Variable Value",
+      "formdata": [
+        "pic",
+        "temp",
+        "equal to",
+        "3"
+      ],
+      "formnames": [
+        "varname",
+        "saveVarType",
+        "compare",
+        "value"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "pout",
+      "guid": "db4f5c76-55d4-460a-aa6f-5560c2ae476e",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "72b6d406-bb83-494b-95ef-2046cec56960"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "466b897f-c88f-4e86-a185-8b352970de89"
+        }
+      ],
+      "x": 1136,
+      "y": 828,
+      "rtype": "Message",
+      "rsubtype": "Send Image",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "https://cdn.discordapp.com/attachments/881707436434677782/909290349682368552/Capture.JPG",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelName",
+        "url",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "check2_1_1",
+      "guid": "311f16f3-c36e-48c8-9782-8f1bcc59744b",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "true",
+          "connections": [
+            "a6bb67c4-5e8c-490b-aa78-fffe139cf39b"
+          ]
+        },
+        {
+          "label": "false",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "466b897f-c88f-4e86-a185-8b352970de89"
+        }
+      ],
+      "x": 1140,
+      "y": 960,
+      "rtype": "Variable",
+      "rsubtype": "Check Variable Value",
+      "formdata": [
+        "pic",
+        "temp",
+        "equal to",
+        "4"
+      ],
+      "formnames": [
+        "varname",
+        "saveVarType",
+        "compare",
+        "value"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "pout_1",
+      "guid": "a6bb67c4-5e8c-490b-aa78-fffe139cf39b",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "311f16f3-c36e-48c8-9782-8f1bcc59744b"
+        }
+      ],
+      "x": 1325,
+      "y": 940,
+      "rtype": "Message",
+      "rsubtype": "Send Image",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "https://cdn.discordapp.com/attachments/881707436434677782/909271486265704498/unknown-1952_1.png",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelName",
+        "url",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "swimsuit_1",
+      "guid": "3e3b9d55-da42-44e4-9b28-7d5e4c8406f6",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "8fd42daf-6eaf-4614-bbe1-15abb2ed0956"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "cd3afbf9-c110-4b9e-b84f-a0cd2342d5c9"
+        }
+      ],
+      "x": 737,
+      "y": 614,
+      "rtype": "Message",
+      "rsubtype": "Send Image",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "https://cdn.discordapp.com/attachments/881707436434677782/909314587868954624/unknown-582_1.png",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelName",
+        "url",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "deletevar",
+      "guid": "8fd42daf-6eaf-4614-bbe1-15abb2ed0956",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "3e3b9d55-da42-44e4-9b28-7d5e4c8406f6"
+        }
+      ],
+      "x": 940,
+      "y": 611,
+      "rtype": "Variable",
+      "rsubtype": "Edit Variable",
+      "formdata": [
+        "pics",
+        "temp",
+        "-",
+        "0"
+      ],
+      "formnames": [
+        "varname",
+        "saveVarType",
+        "oper",
+        "value"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "deletevar_1",
+      "guid": "d315abd4-92a6-430a-8517-a3a4c4bca5b7",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "6c3b8c1d-636f-4479-9567-92387f69d53d"
+        }
+      ],
+      "x": 1141,
+      "y": 713,
+      "rtype": "Variable",
+      "rsubtype": "Edit Variable",
+      "formdata": [
+        "pics",
+        "temp",
+        "-",
+        "0"
+      ],
+      "formnames": [
+        "varname",
+        "saveVarType",
+        "oper",
+        "value"
+      ],
+      "messageActionRows": []
+    },
+    {
+      "type": "response",
+      "name": "deletevar_2",
+      "guid": "72b6d406-bb83-494b-95ef-2046cec56960",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "db4f5c76-55d4-460a-aa6f-5560c2ae476e"
+        }
+      ],
+      "x": 1320,
+      "y": 822,
+      "rtype": "Variable",
+      "rsubtype": "Edit Variable",
+      "formdata": [
+        "pics",
+        "temp",
+        "-",
+        "0"
+      ],
+      "formnames": [
+        "varname",
+        "saveVarType",
+        "oper",
+        "value"
+      ],
+      "messageActionRows": []
+    },
+    {
+      "type": "response",
+      "name": "deletevar_2_1",
+      "guid": "1605ebbc-20a1-4f60-b5f1-b8a7f8a686fc",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": []
+        }
+      ],
+      "x": 498,
+      "y": 799,
+      "rtype": "Variable",
+      "rsubtype": "Edit Variable",
+      "formdata": [
+        "pics",
+        "temp",
+        "-",
+        "0"
+      ],
+      "formnames": [
+        "varname",
+        "saveVarType",
+        "oper",
+        "value"
+      ],
+      "messageActionRows": []
+    },
+    {
+      "type": "command",
+      "name": "buy",
+      "guid": "bd19b708-14f1-4b8b-b6fb-a6a4d80fc44f",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "2a02a7c5-9ee5-4c8f-8d81-67325814aee2"
+          ]
+        }
+      ],
+      "inputs": [],
+      "x": 32,
+      "y": 1007
+    },
+    {
+      "type": "response",
+      "name": "sellvar_1",
+      "guid": "2a02a7c5-9ee5-4c8f-8d81-67325814aee2",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "ammountbuy",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "63b43283-981b-481f-b57f-713c2a65e1d8"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "bd19b708-14f1-4b8b-b6fb-a6a4d80fc44f"
+        }
+      ],
+      "x": 297,
+      "y": 1005,
+      "rtype": "Variable",
+      "rsubtype": "Store Value in Variable",
+      "formdata": [
+        "ammountbuy",
+        "Text",
+        "temp",
+        "1"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType",
+        "param"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "sellvar2_1",
+      "guid": "63b43283-981b-481f-b57f-713c2a65e1d8",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "Pricebuy",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "68c820ad-4fe6-424c-b9a0-d3f0fe7d106f"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "2a02a7c5-9ee5-4c8f-8d81-67325814aee2"
+        }
+      ],
+      "x": 523,
+      "y": 1010,
+      "rtype": "Variable",
+      "rsubtype": "Store Value in Variable",
+      "formdata": [
+        "Pricebuy",
+        "Text",
+        "temp",
+        "2"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType",
+        "param"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "sellvar3_1",
+      "guid": "68c820ad-4fe6-424c-b9a0-d3f0fe7d106f",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "Systembuy",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "bb046e6e-12b8-4af8-9fb6-87e7dc3bd5f3"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "63b43283-981b-481f-b57f-713c2a65e1d8"
+        }
+      ],
+      "x": 726,
+      "y": 1012,
+      "rtype": "Variable",
+      "rsubtype": "Store Value in Variable",
+      "formdata": [
+        "Systembuy",
+        "Text",
+        "temp",
+        "3"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType",
+        "param"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "sellvar4_1",
+      "guid": "bb046e6e-12b8-4af8-9fb6-87e7dc3bd5f3",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "itembuy",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "94d3cd56-5501-4515-96cd-727241a6f382"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "68c820ad-4fe6-424c-b9a0-d3f0fe7d106f"
+        }
+      ],
+      "x": 921,
+      "y": 1017,
+      "rtype": "Variable",
+      "rsubtype": "Store Value in Variable",
+      "formdata": [
+        "itembuy",
+        "Text",
+        "temp",
+        "4+"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType",
+        "param"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "sellcof_1",
+      "guid": "94d3cd56-5501-4515-96cd-727241a6f382",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "buycomf",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "469ef0f9-baa7-4681-8b0e-c1f46702f4e9"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "bb046e6e-12b8-4af8-9fb6-87e7dc3bd5f3"
+        }
+      ],
+      "x": 1120,
+      "y": 1185,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "09FF00",
+        "Comfirm Listing?",
+        "",
+        "${dbsVars.CommandAuthor.displayName}",
+        "",
+        "",
+        "Buying: ${tempVars.itembuy}\nPrice: ${tempVars.Pricebuy}\nLocation: ${tempVars.Systembuy}\nStock: ${tempVars.ammountbuy}",
+        "",
+        "",
+        "Toffee bot by Cyzoc#6613",
+        "BOOL_TRUE@@",
+        "buycomf",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "reaction_1",
+      "guid": "469ef0f9-baa7-4681-8b0e-c1f46702f4e9",
+      "reactionFields": [
+        "🟢",
+        "🔴"
+      ],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "🟢",
+          "connections": [
+            "888645a7-38f4-49f1-9b0d-c5b884790800"
+          ]
+        },
+        {
+          "label": "🔴",
+          "connections": [
+            "11ff832e-0025-4955-ab88-4c5ee8b78d49"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "94d3cd56-5501-4515-96cd-727241a6f382"
+        }
+      ],
+      "x": 1334,
+      "y": 1187,
+      "rtype": "Reaction",
+      "rsubtype": "Add Reaction Listener",
+      "formdata": [
+        "${tempVars.buycomf.id}",
+        "0",
+        "reactedbuy",
+        "reacteduserbuy",
+        "BOOL_TRUE@@"
+      ],
+      "formnames": [
+        "message",
+        "duration",
+        "reactionemoji",
+        "reactionuser",
+        "react"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "denied_1",
+      "guid": "11ff832e-0025-4955-ab88-4c5ee8b78d49",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "d1ea6545-6f61-4761-b160-e298f2fa6f1d"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "469ef0f9-baa7-4681-8b0e-c1f46702f4e9"
+        }
+      ],
+      "x": 1570,
+      "y": 1285,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "Oh, you must have made a mistake. Try again if you wish :pouttoffee:",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelName",
+        "messageText",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": []
+    },
+    {
+      "type": "response",
+      "name": "sold_1",
+      "guid": "888645a7-38f4-49f1-9b0d-c5b884790800",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "1cf5e5da-677b-4b34-a3d2-9c35c429390a"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "469ef0f9-baa7-4681-8b0e-c1f46702f4e9"
+        }
+      ],
+      "x": 1575,
+      "y": 1160,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "814298586510655564",
+        "AD284E",
+        "Buy Listing:",
+        "",
+        "${dbsVars.CommandAuthor.displayName}",
+        "",
+        "",
+        "Item: ${tempVars.itembuy}\nPrice: ${tempVars.Pricebuy}\nSystem: ${tempVars.Systembuy}\nStock: ${tempVars.ammountbuy}",
+        "",
+        "",
+        "Toffee Bot by Cyzoc#6613",
+        "BOOL_TRUE@@",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "dlete2_1",
+      "guid": "1cf5e5da-677b-4b34-a3d2-9c35c429390a",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "888645a7-38f4-49f1-9b0d-c5b884790800"
+        }
+      ],
+      "x": 1826,
+      "y": 1155,
+      "rtype": "Message",
+      "rsubtype": "Delete Message",
+      "formdata": [
+        "${dbsVars.CommandMessage.id} ${tempVars.buycomf.id}",
+        "${dbsVars.CommandChannel.id}"
+      ],
+      "formnames": [
+        "varname",
+        "channelName"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "wait69_1",
+      "guid": "d1ea6545-6f61-4761-b160-e298f2fa6f1d",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "7d95eb02-c67f-43be-8454-7d70863c25e9"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "11ff832e-0025-4955-ab88-4c5ee8b78d49"
+        }
+      ],
+      "x": 1804,
+      "y": 1296,
+      "rtype": "Control",
+      "rsubtype": "Wait",
+      "formdata": [
+        "7",
+        "seconds"
+      ],
+      "formnames": [
+        "waitduration",
+        "unit"
+      ],
+      "messageActionRows": []
+    },
+    {
+      "type": "response",
+      "name": "delete_1",
+      "guid": "7d95eb02-c67f-43be-8454-7d70863c25e9",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "d1ea6545-6f61-4761-b160-e298f2fa6f1d"
+        }
+      ],
+      "x": 2007,
+      "y": 1306,
+      "rtype": "Message",
+      "rsubtype": "Delete Message",
+      "formdata": [
+        "${dbsVars.CommandMessage.id} ${tempVars.buycomf.id}",
+        "${dbsVars.CommandChannel.id}"
+      ],
+      "formnames": [
+        "varname",
+        "channelName"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "command",
+      "name": "killed",
+      "guid": "d98d1ca6-d5ac-4965-b049-58ef43d6d4b3",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "57e850ba-2c96-49c7-9bb1-9cd5baa8f466"
+          ]
+        }
+      ],
+      "inputs": [],
+      "x": 22,
+      "y": 1373
+    },
+    {
+      "type": "response",
+      "name": "who",
+      "guid": "57e850ba-2c96-49c7-9bb1-9cd5baa8f466",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "who",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "8ce53dee-7ea7-422c-96a0-e925e09feb75"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "d98d1ca6-d5ac-4965-b049-58ef43d6d4b3"
+        }
+      ],
+      "x": 250,
+      "y": 1350,
+      "rtype": "Variable",
+      "rsubtype": "Store Value in Variable",
+      "formdata": [
+        "who",
+        "Text",
+        "temp",
+        "1"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType",
+        "param"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "ground or space",
+      "guid": "8ce53dee-7ea7-422c-96a0-e925e09feb75",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "Ground or space",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "e44feb70-c0a2-451e-8fa1-e75879a90bd3"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "57e850ba-2c96-49c7-9bb1-9cd5baa8f466"
+        }
+      ],
+      "x": 460,
+      "y": 1345,
+      "rtype": "Variable",
+      "rsubtype": "Store Value in Variable",
+      "formdata": [
+        "Ground or space",
+        "Text",
+        "temp",
+        "2"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType",
+        "param"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "ship and loot",
+      "guid": "e44feb70-c0a2-451e-8fa1-e75879a90bd3",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "ship and loot",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "f1b9eddc-997e-4668-9499-dce2c127c27e"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "8ce53dee-7ea7-422c-96a0-e925e09feb75"
+        }
+      ],
+      "x": 646,
+      "y": 1358,
+      "rtype": "Variable",
+      "rsubtype": "Store Value in Variable",
+      "formdata": [
+        "ship and loot",
+        "Text",
+        "temp",
+        "3+"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType",
+        "param"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "well done",
+      "guid": "f1b9eddc-997e-4668-9499-dce2c127c27e",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "e4c9744a-5660-4e04-a1b8-66616fb9d00e"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "e44feb70-c0a2-451e-8fa1-e75879a90bd3"
+        }
+      ],
+      "x": 862,
+      "y": 1364,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "Well done soldier. Keep the galaxy safe and bring a name to our faction! You will be rewarded in points.",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelName",
+        "messageText",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "post",
+      "guid": "e4c9744a-5660-4e04-a1b8-66616fb9d00e",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "f1b9eddc-997e-4668-9499-dce2c127c27e"
+        }
+      ],
+      "x": 1061,
+      "y": 1365,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "815842265561169970",
+        "FF0000",
+        "Kill Report",
+        "",
+        "${dbsVars.CommandAuthor.displayName}",
+        "",
+        "",
+        "${dbsVars.CommandAuthor.displayName} killed ${tempVars.who}\nKill Type: ${tempVars.Ground or space}\nLoot and other info: ${tempVars.ship and loot}\nBring peace to the galaxy by eliminating enemies and pirates.\nTOF.",
+        "",
+        "",
+        "Toffee Bot by Cyzoc#6613",
+        "BOOL_TRUE@@",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "command",
+      "name": "claim",
+      "guid": "3790815e-791d-4a4a-a6ea-9cb970bc788c",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "b3ab7899-1573-4d3a-a290-9e58f7bc3aa4"
+          ]
+        }
+      ],
+      "inputs": [],
+      "x": 37,
+      "y": 1675
+    },
+    {
+      "type": "response",
+      "name": "whoKO",
+      "guid": "b3ab7899-1573-4d3a-a290-9e58f7bc3aa4",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "whoKO",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "afafb7db-0eba-46d4-beb8-894d502780a1"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "3790815e-791d-4a4a-a6ea-9cb970bc788c"
+        }
+      ],
+      "x": 250,
+      "y": 1650,
+      "rtype": "Variable",
+      "rsubtype": "Store Value in Variable",
+      "formdata": [
+        "whoKO",
+        "Text",
+        "temp",
+        "1"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType",
+        "param"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "Causeofdeath",
+      "guid": "afafb7db-0eba-46d4-beb8-894d502780a1",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "ground or spaceKO",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "fb822cf7-ae1a-4752-ba2d-cec2380b3cbd"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "b3ab7899-1573-4d3a-a290-9e58f7bc3aa4"
+        }
+      ],
+      "x": 444,
+      "y": 1649,
+      "rtype": "Variable",
+      "rsubtype": "Store Value in Variable",
+      "formdata": [
+        "ground or spaceKO",
+        "Text",
+        "temp",
+        "2"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType",
+        "param"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "locationKO",
+      "guid": "fb822cf7-ae1a-4752-ba2d-cec2380b3cbd",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "locationKO",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "6c4eb251-7fa8-495d-8853-9fb28c0d8974"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "afafb7db-0eba-46d4-beb8-894d502780a1"
+        }
+      ],
+      "x": 632,
+      "y": 1652,
+      "rtype": "Variable",
+      "rsubtype": "Store Value in Variable",
+      "formdata": [
+        "locationKO",
+        "Text",
+        "temp",
+        "3"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType",
+        "param"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "whatKO",
+      "guid": "6c4eb251-7fa8-495d-8853-9fb28c0d8974",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "whatKO",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "b02d19f7-1916-4c8e-9a2b-cc5953d6f2da"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "fb822cf7-ae1a-4752-ba2d-cec2380b3cbd"
+        }
+      ],
+      "x": 823,
+      "y": 1653,
+      "rtype": "Variable",
+      "rsubtype": "Store Value in Variable",
+      "formdata": [
+        "whatKO",
+        "Text",
+        "temp",
+        "4+"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType",
+        "param"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "soonKO",
+      "guid": "b02d19f7-1916-4c8e-9a2b-cc5953d6f2da",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "0061e3e7-b45e-4cf5-b261-46d8b7afa819"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "6c4eb251-7fa8-495d-8853-9fb28c0d8974"
+        }
+      ],
+      "x": 1021,
+      "y": 1658,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "Losing your stuff after dying is a pain, we understand. I will get a mod to you as soon as possible. ",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelName",
+        "messageText",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "postKO",
+      "guid": "0061e3e7-b45e-4cf5-b261-46d8b7afa819",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "b02d19f7-1916-4c8e-9a2b-cc5953d6f2da"
+        }
+      ],
+      "x": 1222,
+      "y": 1661,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "815842222439792690",
+        "000000",
+        "Insurance Claim",
+        "",
+        "${dbsVars.CommandAuthor.displayName}",
+        "",
+        "",
+        "Who killed: ${tempVars.whoKO}\nType of Death: ${tempVars.ground or spaceKO}\nLocation: \n${tempVars.locationKO}\nWhat was lost and how: ${tempVars.whatKO}",
+        "",
+        "",
+        "Toffee Bot by Cyzoc#6613",
+        "BOOL_TRUE@@",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    }
+  ]
+}

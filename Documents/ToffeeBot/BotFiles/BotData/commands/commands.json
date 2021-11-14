@@ -1,0 +1,608 @@
+{
+  "command": [
+    {
+      "name": "help",
+      "actions": [
+        {
+          "name": "help menu",
+          "category": "Message",
+          "type": "Send Embed",
+          "messageActionRows": [],
+          "channelname": "${dbsVars.CommandChannel.id}",
+          "color": "1FFF57",
+          "title": "Help Menu",
+          "url": "",
+          "authorname": "",
+          "authorimageurl": "",
+          "authorlink": "",
+          "description": "Commands:\nt!sell <stock> <price> <system> <item> | This will list your items in the #trading channel. \nt!pics | Will show a pic of Toffee. (Very cute and made by Scottland_GT thanks him)\nt!buy <stock> <price> <system> <item> | This will list items you want in the #trading channel. \nt!killed <player username> <ground or space> <ship type and loot> | This will post your kill into our kill feed channel.\nt!claim <who killed you> <Space or ground> <location> <how did you die and what was lost> | This will make a insurance claim for you to get your stuff back at lowered prices. \n",
+          "thumbnail": "",
+          "image": "",
+          "footer": "Toffee Bot by Cyzoc#6613",
+          "timestamp": "false",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ]
+    },
+    {
+      "name": "info",
+      "actions": [
+        {
+          "name": "show info",
+          "category": "Message",
+          "type": "Send Message",
+          "messageActionRows": [],
+          "channelname": "${dbsVars.DefaultChannel.id}",
+          "messagetext": "Command Author: ${dbsVars.CommandAuthor.displayName}\nTagged author: <@${dbsVars.CommandAuthor.id}>\nYou can insert more values by clicking the \"Insert Variable\" button next to this field!",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ]
+    },
+    {
+      "name": "sell",
+      "perms": [],
+      "actions": [
+        {
+          "name": "sellvar",
+          "category": "Variable",
+          "type": "Store Value in Variable",
+          "messageActionRows": [],
+          "varname": "ammount",
+          "vartype": "Text",
+          "savevartype": "temp",
+          "param": "1"
+        },
+        {
+          "name": "sellvar2",
+          "category": "Variable",
+          "type": "Store Value in Variable",
+          "messageActionRows": [],
+          "varname": "Price",
+          "vartype": "Text",
+          "savevartype": "temp",
+          "param": "2"
+        },
+        {
+          "name": "sellvar3",
+          "category": "Variable",
+          "type": "Store Value in Variable",
+          "messageActionRows": [],
+          "varname": "System",
+          "vartype": "Text",
+          "savevartype": "temp",
+          "param": "3"
+        },
+        {
+          "name": "sellvar4",
+          "category": "Variable",
+          "type": "Store Value in Variable",
+          "messageActionRows": [],
+          "varname": "item",
+          "vartype": "Text",
+          "savevartype": "temp",
+          "param": "4+"
+        },
+        {
+          "name": "sellcof",
+          "category": "Message",
+          "type": "Send Embed",
+          "messageActionRows": [],
+          "channelname": "${dbsVars.CommandChannel.id}",
+          "color": "09FF00",
+          "title": "Comfirm Listing?",
+          "url": "",
+          "authorname": "${dbsVars.CommandAuthor.displayName}",
+          "authorimageurl": "",
+          "authorlink": "",
+          "description": "Selling: ${tempVars.item}\nPrice: ${tempVars.Price}\nLocation: ${tempVars.System}\nStock: ${tempVars.ammount}",
+          "thumbnail": "",
+          "image": "",
+          "footer": "Toffee bot by Cyzoc#6613",
+          "timestamp": "BOOL_TRUE@@",
+          "savetovariable": "itemconfirm",
+          "savetovariabletype": "temp"
+        },
+        {
+          "name": "reaction",
+          "category": "Reaction",
+          "type": "Add Reaction Listener",
+          "reactionActions": {
+            "🟢": [
+              {
+                "name": "sold",
+                "category": "Message",
+                "type": "Send Embed",
+                "messageActionRows": [],
+                "channelname": "814298586510655564",
+                "color": "53AD13",
+                "title": "Sell Listing:",
+                "url": "",
+                "authorname": "${dbsVars.CommandAuthor.displayName}",
+                "authorimageurl": "",
+                "authorlink": "",
+                "description": "Item: ${tempVars.item}\nPrice: ${tempVars.Price}\nSystem: ${tempVars.System}\nStock: ${tempVars.ammount}",
+                "thumbnail": "",
+                "image": "",
+                "footer": "Toffee Bot by Cyzoc#6613",
+                "timestamp": "BOOL_TRUE@@",
+                "savetovariable": "sellmsg",
+                "savetovariabletype": "temp"
+              },
+              {
+                "name": "dlete2",
+                "category": "Message",
+                "type": "Delete Message",
+                "messageActionRows": [],
+                "varname": "${tempVars.itemconfirm.id} ${dbsVars.CommandMessage.id}",
+                "channelname": "${dbsVars.CommandChannel.id}"
+              }
+            ],
+            "🔴": [
+              {
+                "name": "denied",
+                "category": "Message",
+                "type": "Send Message",
+                "messageActionRows": [],
+                "channelname": "${dbsVars.CommandChannel.id}",
+                "messagetext": "Oh, you must have made a mistake. Try again if you wish :pouttoffee:",
+                "savetovariable": "",
+                "savetovariabletype": "temp"
+              },
+              {
+                "name": "wait69",
+                "category": "Control",
+                "type": "Wait",
+                "messageActionRows": [],
+                "waitduration": "7",
+                "unit": "seconds"
+              },
+              {
+                "name": "delete",
+                "category": "Message",
+                "type": "Delete Message",
+                "messageActionRows": [],
+                "varname": "${tempVars.itemconfirm.id} ${dbsVars.CommandMessage.id}",
+                "channelname": "${dbsVars.CommandChannel.id}"
+              }
+            ]
+          },
+          "messageActionRows": [],
+          "message": "${tempVars.itemconfirm.id}",
+          "duration": "0",
+          "reactionemoji": "reacted",
+          "reactionuser": "reacteduser",
+          "react": "BOOL_TRUE@@"
+        }
+      ]
+    },
+    {
+      "name": "pics",
+      "perms": [],
+      "actions": [
+        {
+          "name": "rngpic",
+          "category": "Variable",
+          "type": "Generate Random Number",
+          "messageActionRows": [],
+          "varname": "pic",
+          "min": "1",
+          "max": "4",
+          "savevartype": "temp"
+        },
+        {
+          "name": "are you sure?",
+          "category": "Message",
+          "type": "Send Message",
+          "messageActionRows": [],
+          "channelname": "${dbsVars.CommandChannel.id}",
+          "messagetext": "I look cute, Don't I UwU...",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        },
+        {
+          "name": "check",
+          "category": "Variable",
+          "type": "Check Variable Value",
+          "trueActions": [
+            {
+              "name": "swimsuit_1",
+              "category": "Message",
+              "type": "Send Image",
+              "messageActionRows": [],
+              "channelname": "${dbsVars.CommandChannel.id}",
+              "url": "https://cdn.discordapp.com/attachments/881707436434677782/909314587868954624/unknown-582_1.png",
+              "savetovariable": "",
+              "savetovariabletype": "temp"
+            },
+            {
+              "name": "deletevar",
+              "category": "Variable",
+              "type": "Edit Variable",
+              "messageActionRows": [],
+              "varname": "pics",
+              "savevartype": "temp",
+              "oper": "-",
+              "value": "0"
+            }
+          ],
+          "falseActions": [
+            {
+              "name": "check2",
+              "category": "Variable",
+              "type": "Check Variable Value",
+              "trueActions": [
+                {
+                  "name": "swimsuit",
+                  "category": "Message",
+                  "type": "Send Image",
+                  "messageActionRows": [],
+                  "channelname": "${dbsVars.CommandChannel.id}",
+                  "url": "https://cdn.discordapp.com/attachments/881707436434677782/909290502560555028/unknown.png",
+                  "savetovariable": "",
+                  "savetovariabletype": "temp"
+                },
+                {
+                  "name": "deletevar_1",
+                  "category": "Variable",
+                  "type": "Edit Variable",
+                  "messageActionRows": [],
+                  "varname": "pics",
+                  "savevartype": "temp",
+                  "oper": "-",
+                  "value": "0"
+                }
+              ],
+              "falseActions": [
+                {
+                  "name": "check2_1",
+                  "category": "Variable",
+                  "type": "Check Variable Value",
+                  "trueActions": [
+                    {
+                      "name": "pout",
+                      "category": "Message",
+                      "type": "Send Image",
+                      "messageActionRows": [],
+                      "channelname": "${dbsVars.CommandChannel.id}",
+                      "url": "https://cdn.discordapp.com/attachments/881707436434677782/909290349682368552/Capture.JPG",
+                      "savetovariable": "",
+                      "savetovariabletype": "temp"
+                    },
+                    {
+                      "name": "deletevar_2",
+                      "category": "Variable",
+                      "type": "Edit Variable",
+                      "messageActionRows": [],
+                      "varname": "pics",
+                      "savevartype": "temp",
+                      "oper": "-",
+                      "value": "0"
+                    }
+                  ],
+                  "falseActions": [
+                    {
+                      "name": "check2_1_1",
+                      "category": "Variable",
+                      "type": "Check Variable Value",
+                      "trueActions": [
+                        {
+                          "name": "pout_1",
+                          "category": "Message",
+                          "type": "Send Image",
+                          "messageActionRows": [],
+                          "channelname": "${dbsVars.CommandChannel.id}",
+                          "url": "https://cdn.discordapp.com/attachments/881707436434677782/909271486265704498/unknown-1952_1.png",
+                          "savetovariable": "",
+                          "savetovariabletype": "temp"
+                        }
+                      ],
+                      "falseActions": [],
+                      "messageActionRows": [],
+                      "varname": "pic",
+                      "savevartype": "temp",
+                      "compare": "equal to",
+                      "value": "4"
+                    }
+                  ],
+                  "messageActionRows": [],
+                  "varname": "pic",
+                  "savevartype": "temp",
+                  "compare": "equal to",
+                  "value": "3"
+                }
+              ],
+              "messageActionRows": [],
+              "varname": "pic",
+              "savevartype": "temp",
+              "compare": "equal to",
+              "value": "2"
+            }
+          ],
+          "messageActionRows": [],
+          "varname": "pic",
+          "savevartype": "temp",
+          "compare": "equal to",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "name": "buy",
+      "actions": [
+        {
+          "name": "sellvar_1",
+          "category": "Variable",
+          "type": "Store Value in Variable",
+          "messageActionRows": [],
+          "varname": "ammountbuy",
+          "vartype": "Text",
+          "savevartype": "temp",
+          "param": "1"
+        },
+        {
+          "name": "sellvar2_1",
+          "category": "Variable",
+          "type": "Store Value in Variable",
+          "messageActionRows": [],
+          "varname": "Pricebuy",
+          "vartype": "Text",
+          "savevartype": "temp",
+          "param": "2"
+        },
+        {
+          "name": "sellvar3_1",
+          "category": "Variable",
+          "type": "Store Value in Variable",
+          "messageActionRows": [],
+          "varname": "Systembuy",
+          "vartype": "Text",
+          "savevartype": "temp",
+          "param": "3"
+        },
+        {
+          "name": "sellvar4_1",
+          "category": "Variable",
+          "type": "Store Value in Variable",
+          "messageActionRows": [],
+          "varname": "itembuy",
+          "vartype": "Text",
+          "savevartype": "temp",
+          "param": "4+"
+        },
+        {
+          "name": "sellcof_1",
+          "category": "Message",
+          "type": "Send Embed",
+          "messageActionRows": [],
+          "channelname": "${dbsVars.CommandChannel.id}",
+          "color": "09FF00",
+          "title": "Comfirm Listing?",
+          "url": "",
+          "authorname": "${dbsVars.CommandAuthor.displayName}",
+          "authorimageurl": "",
+          "authorlink": "",
+          "description": "Buying: ${tempVars.itembuy}\nPrice: ${tempVars.Pricebuy}\nLocation: ${tempVars.Systembuy}\nStock: ${tempVars.ammountbuy}",
+          "thumbnail": "",
+          "image": "",
+          "footer": "Toffee bot by Cyzoc#6613",
+          "timestamp": "BOOL_TRUE@@",
+          "savetovariable": "buycomf",
+          "savetovariabletype": "temp"
+        },
+        {
+          "name": "reaction_1",
+          "category": "Reaction",
+          "type": "Add Reaction Listener",
+          "reactionActions": {
+            "🟢": [
+              {
+                "name": "sold_1",
+                "category": "Message",
+                "type": "Send Embed",
+                "messageActionRows": [],
+                "channelname": "814298586510655564",
+                "color": "AD284E",
+                "title": "Buy Listing:",
+                "url": "",
+                "authorname": "${dbsVars.CommandAuthor.displayName}",
+                "authorimageurl": "",
+                "authorlink": "",
+                "description": "Item: ${tempVars.itembuy}\nPrice: ${tempVars.Pricebuy}\nSystem: ${tempVars.Systembuy}\nStock: ${tempVars.ammountbuy}",
+                "thumbnail": "",
+                "image": "",
+                "footer": "Toffee Bot by Cyzoc#6613",
+                "timestamp": "BOOL_TRUE@@",
+                "savetovariable": "",
+                "savetovariabletype": "temp"
+              },
+              {
+                "name": "dlete2_1",
+                "category": "Message",
+                "type": "Delete Message",
+                "messageActionRows": [],
+                "varname": "${dbsVars.CommandMessage.id} ${tempVars.buycomf.id}",
+                "channelname": "${dbsVars.CommandChannel.id}"
+              }
+            ],
+            "🔴": [
+              {
+                "name": "denied_1",
+                "category": "Message",
+                "type": "Send Message",
+                "messageActionRows": [],
+                "channelname": "${dbsVars.CommandChannel.id}",
+                "messagetext": "Oh, you must have made a mistake. Try again if you wish :pouttoffee:",
+                "savetovariable": "",
+                "savetovariabletype": "temp"
+              },
+              {
+                "name": "wait69_1",
+                "category": "Control",
+                "type": "Wait",
+                "messageActionRows": [],
+                "waitduration": "7",
+                "unit": "seconds"
+              },
+              {
+                "name": "delete_1",
+                "category": "Message",
+                "type": "Delete Message",
+                "messageActionRows": [],
+                "varname": "${dbsVars.CommandMessage.id} ${tempVars.buycomf.id}",
+                "channelname": "${dbsVars.CommandChannel.id}"
+              }
+            ]
+          },
+          "messageActionRows": [],
+          "message": "${tempVars.buycomf.id}",
+          "duration": "0",
+          "reactionemoji": "reactedbuy",
+          "reactionuser": "reacteduserbuy",
+          "react": "BOOL_TRUE@@"
+        }
+      ]
+    },
+    {
+      "name": "killed",
+      "actions": [
+        {
+          "name": "who",
+          "category": "Variable",
+          "type": "Store Value in Variable",
+          "messageActionRows": [],
+          "varname": "who",
+          "vartype": "Text",
+          "savevartype": "temp",
+          "param": "1"
+        },
+        {
+          "name": "ground or space",
+          "category": "Variable",
+          "type": "Store Value in Variable",
+          "messageActionRows": [],
+          "varname": "Ground or space",
+          "vartype": "Text",
+          "savevartype": "temp",
+          "param": "2"
+        },
+        {
+          "name": "ship and loot",
+          "category": "Variable",
+          "type": "Store Value in Variable",
+          "messageActionRows": [],
+          "varname": "ship and loot",
+          "vartype": "Text",
+          "savevartype": "temp",
+          "param": "3+"
+        },
+        {
+          "name": "well done",
+          "category": "Message",
+          "type": "Send Message",
+          "messageActionRows": [],
+          "channelname": "${dbsVars.CommandChannel.id}",
+          "messagetext": "Well done soldier. Keep the galaxy safe and bring a name to our faction! You will be rewarded in points.",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        },
+        {
+          "name": "post",
+          "category": "Message",
+          "type": "Send Embed",
+          "messageActionRows": [],
+          "channelname": "815842265561169970",
+          "color": "FF0000",
+          "title": "Kill Report",
+          "url": "",
+          "authorname": "${dbsVars.CommandAuthor.displayName}",
+          "authorimageurl": "",
+          "authorlink": "",
+          "description": "${dbsVars.CommandAuthor.displayName} killed ${tempVars.who}\nKill Type: ${tempVars.Ground or space}\nLoot and other info: ${tempVars.ship and loot}\nBring peace to the galaxy by eliminating enemies and pirates.\nTOF.",
+          "thumbnail": "",
+          "image": "",
+          "footer": "Toffee Bot by Cyzoc#6613",
+          "timestamp": "BOOL_TRUE@@",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ]
+    },
+    {
+      "name": "claim",
+      "actions": [
+        {
+          "name": "whoKO",
+          "category": "Variable",
+          "type": "Store Value in Variable",
+          "messageActionRows": [],
+          "varname": "whoKO",
+          "vartype": "Text",
+          "savevartype": "temp",
+          "param": "1"
+        },
+        {
+          "name": "Causeofdeath",
+          "category": "Variable",
+          "type": "Store Value in Variable",
+          "messageActionRows": [],
+          "varname": "ground or spaceKO",
+          "vartype": "Text",
+          "savevartype": "temp",
+          "param": "2"
+        },
+        {
+          "name": "locationKO",
+          "category": "Variable",
+          "type": "Store Value in Variable",
+          "messageActionRows": [],
+          "varname": "locationKO",
+          "vartype": "Text",
+          "savevartype": "temp",
+          "param": "3"
+        },
+        {
+          "name": "whatKO",
+          "category": "Variable",
+          "type": "Store Value in Variable",
+          "messageActionRows": [],
+          "varname": "whatKO",
+          "vartype": "Text",
+          "savevartype": "temp",
+          "param": "4+"
+        },
+        {
+          "name": "soonKO",
+          "category": "Message",
+          "type": "Send Message",
+          "messageActionRows": [],
+          "channelname": "${dbsVars.CommandChannel.id}",
+          "messagetext": "Losing your stuff after dying is a pain, we understand. I will get a mod to you as soon as possible. ",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        },
+        {
+          "name": "postKO",
+          "category": "Message",
+          "type": "Send Embed",
+          "messageActionRows": [],
+          "channelname": "815842222439792690",
+          "color": "000000",
+          "title": "Insurance Claim",
+          "url": "",
+          "authorname": "${dbsVars.CommandAuthor.displayName}",
+          "authorimageurl": "",
+          "authorlink": "",
+          "description": "Who killed: ${tempVars.whoKO}\nType of Death: ${tempVars.ground or spaceKO}\nLocation: \n${tempVars.locationKO}\nWhat was lost and how: ${tempVars.whatKO}",
+          "thumbnail": "",
+          "image": "",
+          "footer": "Toffee Bot by Cyzoc#6613",
+          "timestamp": "BOOL_TRUE@@",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ]
+    }
+  ]
+}
